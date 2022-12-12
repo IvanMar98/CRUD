@@ -16,15 +16,19 @@ export class PageMainElement extends LitElement {
         return html`
        <div class="main-container">
             <div class="container">
-                <card-element title = "Administrador"></card-element>
+                <card-element title = "Administrador" @click = "${this.acces}"></card-element>
             </div>
             <div class="container">
-                <card-element title = "Empleado"></card-element>
+                <card-element title = "Empleado"  @click = "${this.acces}"></card-element>
             </div>
        </div> `;
+    }
 
-
-
+    acces(){
+        this.dispatchEvent(new CustomEvent('accesRol', { 
+            bubbles: true,
+            composed: true
+        }));
     }
 }
 customElements.define('page-main-element', PageMainElement);

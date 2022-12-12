@@ -1,16 +1,20 @@
 import { LitElement, html, css, nothing } from 'lit';
 import './page-main-element';
+import './acces-admin';
+import './card-element';
 
 export class CrudElement extends LitElement {
     static get styles() {
         return css`
-            :host {height: 100vh;
+            :host {
+                height: 100vh;
                 display: grid;
                 grid-template-areas: 
                 "title title"
                 "profile profile";
                 align-content: center;
                 justify-content: center;
+
             }
 
             h1{
@@ -22,6 +26,10 @@ export class CrudElement extends LitElement {
             div{
                 grid-area: profile;
             }
+            .main{
+                border: 1px solid #000;
+                border-radius: 2rem;
+            }
         `
     }
     static get properties() {
@@ -32,19 +40,27 @@ export class CrudElement extends LitElement {
         }
     }
 
-    constructor(){
+    constructor() {
         super();
         this.bandera = true;
     }
 
     render() {
         return html`
-       <h1>Login</h1>
         ${this.bandera ?
-            html` <div>
-                <page-main-element></page-main-element>
-                </div>`:
-            nothing}`;
+                html`
+                <h1>Login</h1> 
+                <page-main-element @accesRol = "${this.acces}"></page-main-element>
+                `:
+                
+                html`<acces-admin></acces-admin>`
+        }
+        `
+            ;
+    }
+
+    acces(event){
+       this.bandera = false
     }
 }
 customElements.define('crud-element', CrudElement);
