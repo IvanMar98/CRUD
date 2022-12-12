@@ -1,8 +1,7 @@
 import { LitElement, html, css, nothing } from 'lit';
 import './page-main-element';
 import './acces-admin';
-import './card-element';
-
+import './title-element'
 export class CrudElement extends LitElement {
     static get styles() {
         return css`
@@ -17,7 +16,7 @@ export class CrudElement extends LitElement {
 
             }
 
-            h1{
+            .title{
                 grid-area: title;
                 display: flex;
                 justify-content: center;
@@ -49,7 +48,7 @@ export class CrudElement extends LitElement {
         return html`
         ${this.bandera ?
                 html`
-                <h1>Login</h1> 
+                <title-element class="title" title = "Inventario"></title-element>
                 <page-main-element @accesRol = "${this.acces}"></page-main-element>
                 `:
                 
