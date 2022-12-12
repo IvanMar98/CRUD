@@ -2,13 +2,22 @@
   "name": "crud",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.html",
+  "dependencies": {
+    "lit": "^2.5.0"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvanMar98/CRUD.git"
+  },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "lit": "^2.5.0"
-  }
+  "bugs": {
+    "url": "https://github.com/IvanMar98/CRUD/issues"
+  },
+  "homepage": "https://github.com/IvanMar98/CRUD#readme"
 }
