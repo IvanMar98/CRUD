@@ -2,6 +2,7 @@ import { LitElement, html, css, nothing } from 'lit';
 import './page-main-element';
 import './acces-admin';
 import './title-element'
+import './acces-empleado';
 export class CrudElement extends LitElement {
     static get styles() {
         return css`
@@ -33,7 +34,13 @@ export class CrudElement extends LitElement {
     }
     static get properties() {
         return {
-            bandera: {
+            viewPageMain: {
+                type: Boolean
+            },
+            viewPageAdmin:{
+                type: Boolean
+            },
+            viewPageEmpleado:{
                 type: Boolean
             }
         }
@@ -41,25 +48,45 @@ export class CrudElement extends LitElement {
 
     constructor() {
         super();
-        this.bandera = true;
+        this.viewPageMain = true;
+        this.viewPageAdmin = false;
+        this.viewPageEmpleado = false;
     }
 
     render() {
         return html`
-        ${this.bandera ?
+        ${this.viewPageMain ?
                 html`
                 <title-element class="title" title = "Inventario"></title-element>
-                <page-main-element @accesRol = "${this.acces}"></page-main-element>
-                `:
-                
-                html`<acces-admin></acces-admin>`
+                <page-main-element @accesAdministrador = "${this.accesAdmin}" @accesEmpleado = "${this.accesEmpleado}"></page-main-element>
+                `:null
+        }    
+        ${this.viewPageAdmin ?
+                html`<acces-admin @back = "${this.regresar}"></acces-admin>`
+                :null
         }
-        `
-            ;
+        ${this.viewPageEmpleado ?
+                html`<acces-empleado></acces-empleado>`
+                :null
+        }`;
     }
 
-    acces(event){
-       this.bandera = false
+    accesAdmin(event){
+       this.viewPageMain = false;
+       this.viewPageAdmin = true;
+       this.viewPageEmpleado = false;
+       console.log(this.viewPageEmpleado);
+    }
+    accesEmpleado(event){
+        this.viewPageMain = false;
+        this.viewPageAdmin = false;
+        this.viewPageEmpleado = true;
+        console.log(this.viewPageEmpleado);
+    }
+    regresar(event){
+        this.viewPageMain = true;
+        this.viewPageAdmin = false;
+        this.viewPageEmpleado = false;
     }
 }
 customElements.define('crud-element', CrudElement);

@@ -16,16 +16,22 @@ export class PageMainElement extends LitElement {
         return html`
        <div class="main-container">
             <div class="container">
-                <card-element title = "Administrador" @click = "${this.acces}"></card-element>
+                <card-element title = "Administrador" @click = "${this.accesAdmin}"></card-element>
             </div>
             <div class="container">
-                <card-element title = "Empleado"  @click = "${this.acces}"></card-element>
+                <card-element title = "Empleado"  @click = "${this.accesEmp}"></card-element>
             </div>
        </div> `;
     }
 
-    acces(){
-        this.dispatchEvent(new CustomEvent('accesRol', { 
+    accesAdmin(){
+        this.dispatchEvent(new CustomEvent('accesAdministrador', { 
+            bubbles: true,
+            composed: true
+        }));
+    }
+    accesEmp(){
+        this.dispatchEvent(new CustomEvent('accesEmpleado', { 
             bubbles: true,
             composed: true
         }));

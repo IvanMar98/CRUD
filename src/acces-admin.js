@@ -37,9 +37,19 @@ export class AccesAdmin extends LitElement {
                         <input-element label = "Password" placeholder = "Ingresa tu contraseña" inputType = "password"></input-element>
                 </div>
                 <div>
-                       <button-element></button-element> 
+                       <button-element text = "Login"></button-element> 
+                </div>
+                <div>
+                       <button-element text = "Cancel" @click = "${this.eventBack}"></button-element> 
                 </div>
             </div>`;
+    }
+
+    eventBack(){
+        this.dispatchEvent(new CustomEvent('back', { 
+            bubbles: true,
+            composed: true
+        }));
     }
 }
 customElements.define('acces-admin', AccesAdmin);
